@@ -1,0 +1,46 @@
+Resources:
+  EC2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow http to client host
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+
+  Ec2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-02354e95b39ca8dec
+      UserData:
+        "Fn::Base64": !Sub |
+          #!/bin/bash
+          yum -y update
+
+          # install apache
+          yum -y install httpd
+
+          # start server
+          service httpd start  
+      SecurityGroups:
+        - !Ref EC2SecurityGroup
+      Tags:
+        - Key: Name
+          Value: My EC2 Instance
+        - Key: Type
+          Value: Worker Instance
+
+Outputs:
+  EC2SecurityGroup:
+    Description: Security Group id
+    Value: !Ref EC2SecurityGroup
+    Export:
+      Name: Ec2SecurityGroup
+
+  Ec2Instance:
+    Description: EC2 instance id
+    Value: !Ref Ec2Instance
+    Export:
+      Name: Ec2Instance
