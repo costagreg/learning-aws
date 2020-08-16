@@ -1,2 +1,2 @@
 # learning-aws
-A repo with all my AWS tests performed for the AWS certificate preparation
+This repository contains all my experiments with the AWS services in preparation for the AWS certificate exam.
