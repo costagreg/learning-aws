@@ -6,7 +6,6 @@ The image uploaded will be blured and saved in the same bucket.
 ## AWS SAM
 
 - **Build the SAM template**
-Build the SAM template
 ```shell
 sam build
 ```
@@ -70,7 +69,7 @@ aws s3api put-bucket-notification-configuration --bucket mys3buckettest123 --not
 ```
 
 ### 9. Add policy to role to access the s3 bucket
-- **Open S3Policy.json and change myS3Bucket to the bucket your create above**
+- **Open S3Policy.json and change myS3Bucket to the bucket you have created above**
 - **Add policy to the IAM role**
 ```shell
 aws iam put-role-policy --role-name Test-Role --policy-name ExamplePolicy --policy-document file://S3Policy.json
