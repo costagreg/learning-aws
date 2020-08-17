@@ -1,0 +1,14 @@
+{
+  "name": "s3-integration",
+  "version": "1.0.0",
+  "description": "In this expriment, we will learn:  - How to create an S3 bucket through the AWS CLI. - Upload an image to the S3 bucket - Add a watermark to the image and save it",
+  "main": "lambda.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jimp": "^0.16.0"
+  }
+}
