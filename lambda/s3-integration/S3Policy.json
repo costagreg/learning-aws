@@ -1,0 +1,13 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1597690074926",
+      "Action": [
+        "s3:ObjectCreated:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::${myS3Bucket}/*"
+    }
+  ]
+}
