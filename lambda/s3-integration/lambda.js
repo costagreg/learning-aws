@@ -4,7 +4,6 @@ const s3 = new AWS.S3();
 
 const isSupportedImage = (url) => {
   const supportedImageTypes = ["jpg", "png"];
-
   const typeMatch = url.match(/\.([^.]*)$/);
 
   if (!typeMatch) {
