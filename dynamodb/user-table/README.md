@@ -168,7 +168,6 @@ aws dynamodb scan \
 ```
 
 ### 10. Search for users with Age = 30: using GSI
-
 ```shell
 aws dynamodb update-table \
     --table-name Users \
@@ -183,6 +182,47 @@ aws dynamodb update-table \
     --index-name UsersAge-index \
     --key-condition-expression "Age = :Age" \
     --expression-attribute-values  '{":Age":{"N":"28"}}'
+```
+### 11. Pagination
+
+```shell
+aws dynamodb scan \
+    --table-name Users \
+    --max-items 3
+```
+
+Get NextToken from response and use it in the next command
+
+```shell
+aws dynamodb scan \
+    --table-name Users \
+    --max-items 3 \
+    --starting-token eyJFeGNsdXNpdmVTdGFydEtleSI6IG51bGwsICJib3RvX3RydW5jYXRlX2Ftb3VudCI6IDN9
+```
+
+### 11. Pagination
+```shell
+aws dynamodb scan \
+    --table-name Users \
+    --max-items 3
+```
+
+Get NextToken from response and use it in the next command
+
+```shell
+aws dynamodb scan \
+    --table-name Users \
+    --max-items 3 \
+    --starting-token eyJFeGNsdXNpdmVTdGFydEtleSI6IG51bGwsICJib3RvX3RydW5jYXRlX2Ftb3VudCI6IDN9
+```
+
+### 12. --page-size parameter
+Define the maximum result per each call.
+
+```shell
+aws dynamodb scan \
+    --table-name Users \
+    --page-size 1
 ```
 
 ### 11. Delete table
