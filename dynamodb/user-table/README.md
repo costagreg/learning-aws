@@ -159,7 +159,7 @@ aws dynamodb batch-write-item \
 }'
 ```
 
-### 9. Seatch for users with Age of 30
+### 9. Search for users with Age of 30
 ```shell
 aws dynamodb scan \
     --table-name Users \
@@ -167,7 +167,7 @@ aws dynamodb scan \
     --expression-attribute-values '{":Age":{"N":"30"}}'
 ```
 
-### 10. Seatch for users with Age = 30: using GSI
+### 10. Search for users with Age = 30: using GSI
 
 ```shell
 aws dynamodb update-table \
@@ -183,4 +183,10 @@ aws dynamodb update-table \
     --index-name UsersAge-index \
     --key-condition-expression "Age = :Age" \
     --expression-attribute-values  '{":Age":{"N":"28"}}'
+```
+
+### 11. Delete table
+```shell
+ aws dynamodb delete-table \
+    --table-name Users
 ```
