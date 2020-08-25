@@ -60,3 +60,13 @@ USEDMEMORY=$(free -m | awk 'NR==2{printf "%.2f\t", $3*100/$2 }')
 
 aws cloudwatch put-metric-data --metric-name memory-usage-two --dimensions instanceId=${myInstanceId} --namespace "Custom" --value $USEDMEMORY
 ```
+
+- **Make custom.sh executable**
+```shell
+chmod +x custom.sh
+```
+
+- **Run it**
+```shell
+./custom.sh
+```
