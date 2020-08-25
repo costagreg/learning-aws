@@ -16,7 +16,7 @@ aws iam add-role-to-instance-profile --role-name ${myCloudWatchRole} --instance-
 
 ### 2. Add the CloudWatchAgentServerPolicy managed policy to your IAM role
 ```shell
-aws iam attach-role-policy --role-name EC2CloudWatchAgentRole --policy-arn arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
+aws iam attach-role-policy --role-name ${myCloudWatchRole} --policy-arn arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
 ```
 
 ### 3. Create an EC2 instance
@@ -30,7 +30,7 @@ aws ec2 describe-key-pairs
 aws ec2 create-security-group --group-name ${mySecurityGroupName} --description "My security group"
 ```
 
-- **Authorise SSh to SG**
+- **Authorise SSH to SG**
 ```shell
 aws ec2 authorize-security-group-ingress --group-name ${mySecurityGroupName} --protocol tcp --port 22 --cidr 0.0.0.0/0
 ```
