@@ -40,12 +40,12 @@ aws kms get-key-policy --key-id ${yourCMKKeyId} --policy-name default --output t
 aws kms put-key-policy  --key-id ${yourCMKKeyId} --policy-name default --policy file://policy.json
 ```
 
-### 5. Associate the AWS CMS KEY to an existing log group
+### 5. Associate the AWS CMK KEY to an existing log group
 ```shell
 aws logs associate-kms-key --log-group-name ${yourLogGroupName} --kms-key-id "${yourKeyArn}"
 ```
 
-### 6. Associate the AWS CMS KEY to a new log group
+### 6. Associate the AWS CMK KEY to a new log group
 ```shell
 aws logs create-log-group --log-group-name ${yourLogGroupName} --kms-key-id "${yourKeyArn}"
 ```
