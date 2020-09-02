@@ -12,12 +12,12 @@ aws kms create-key
 aws kms get-key-policy --key-id ${yourCMKKeyId} --policy-name default --output text > ./policy.json
 ```
 
-### 3. Add the follow statement to policy.json
+### 3. Add the following statement to policy.json
 ```json
 {
   "Effect": "Allow",
   "Principal": {
-    "Service": "logs.us-east-1.amazonaws.com"
+    "Service": "logs.${awsRegion}.amazonaws.com"
   },
   "Action": [
     "kms:Encrypt*",
