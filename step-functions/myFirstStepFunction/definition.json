@@ -1,0 +1,42 @@
+{
+  "Comment": "A Hello World example of the Amazon States Language using Pass states",
+  "StartAt": "Process payment",
+  "States": {
+    "Process payment": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:us-east-1:${yourAwsAccountId}:function:processPayment",
+        "Payload": {
+          "Input.$": "$"
+        }
+      },
+      "Next": "Is it successful?"
+    },
+    "Is it successful?": {
+      "Type": "Choice",
+      "InputPath": "$.Payload",
+      "Choices": [
+        {
+          "Variable": "$.result",
+          "BooleanEquals": true,
+          "Next": "Approve order"
+        },
+        {
+          "Not": {
+            "Variable": "$.result",
+            "BooleanEquals": false
+          },
+          "Next": "Cancel order"
+        }
+      ],
+      "Default": "Cancel order"
+    },
+    "Approve order": {
+      "Type": "Succeed"
+    },
+    "Cancel order": {
+      "Type": "Fail"
+    }
+  }
+}
