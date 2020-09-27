@@ -1,2 +1,2 @@
 ## Experiment
-Built an autentication application using CloudFront + Lambda Edge + Cognito + Aws-amplify
+Built a React Authentication App using CloudFront + Lambda Edge + Cognito + Aws-amplify
